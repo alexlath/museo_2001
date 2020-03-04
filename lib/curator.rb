@@ -35,4 +35,11 @@ class Curator
       artists
     end
   end
+
+  def artists_from(country)
+    @artists.select { |artist| artist.country == country }
+  end
+
+  def photographs_taken_by_artist_from(country)
+  end
 end
