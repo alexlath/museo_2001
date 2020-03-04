@@ -120,7 +120,6 @@ class CuratorTest < Minitest::Test
   end
 
   def test_it_can_find_photographs_taken_by_artists_from_given_country
-    skip
     @curator.add_artist(@artist_1)
     @curator.add_artist(@artist_2)
     @curator.add_artist(@artist_3)
@@ -131,5 +130,34 @@ class CuratorTest < Minitest::Test
 
     assert_equal [@photo_2, @photo_3, @photo_4], @curator.photographs_taken_by_artist_from("United States")
     assert_equal [], @curator.photographs_taken_by_artist_from("Argentina")
+  end
+
+  def test_it_can_load_data_to_objects_array
+    path = './data/photographs.csv'
+    photographs = @curator.csv_data(path, Photograph)
+    photo_4 = Photograph.new({id: "4",
+                              name: "Child with Toy Hand Grenade in Central Park",
+                              artist_id: "3",
+                              year: "1962"})
+
+    assert_equal Array, photographs.class
+    assert_equal 4, photographs.length
+    assert_instance_of Photograph, photographs.first
+    # assert_equal photo_4, photographs.last
+
+  end
+
+  def test_it_can_load_photographs
+    skip
+    photo_4 = Photograph.new({id: "4",
+                              name: "Child with Toy Hand Grenade in Central Park",
+                              artist_id: "3",
+                              year: "1962"})
+
+    @curator.load_photographs('./data/photographs.csv')
+
+    expected = [@photo_1, @photo_2, @photo_3, photo_4]
+
+    assert_equal expected, @curator.photographs
   end
 end
