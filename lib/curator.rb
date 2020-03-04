@@ -43,10 +43,9 @@ class Curator
     end
   end
 
-  # def photographs_taken_by_artist_from(country)
-  #   @photographs.map { |photograph| photograph if artist_ids_from(country).include?(@artists.select @photograph.artist_id) }
-  #
-  #
-  #   artists_from(country).flat_map { |artist| @photographs. }
-  # end
+  def photographs_taken_by_artist_from(country)
+    @photographs.select do |photograph|
+      artist_ids_from(country).include?(@photograph.artist_id)
+    end
+  end
 end
