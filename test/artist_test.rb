@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
-require 'artist'
+require './lib/artist'
 
 class ArtistTest < Minitest::Test
   def setup
@@ -21,6 +21,6 @@ class ArtistTest < Minitest::Test
     assert_equal "Ansel Adams", @artist.name
     assert_equal "1902", @artist.born
     assert_equal "1984", @artist.died
-    assert_equal "United", @artist.country
+    assert_equal "United States", @artist.country
   end
 end
