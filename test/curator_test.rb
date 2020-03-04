@@ -165,7 +165,7 @@ class CuratorTest < Minitest::Test
 
   def test_it_can_load_artists
     # Not wasting time creating array of new artists
-    # knowing that the test will fail
+    # knowing that the test will fail (see prev comment)
 
     @curator.load_artists('./data/artists.csv')
   end
