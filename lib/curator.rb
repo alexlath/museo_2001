@@ -28,4 +28,11 @@ class Curator
       photographs_by_artist
     end
   end
+
+  def artists_with_multiple_photographs
+    photographs_by_artist.reduce([]) do |artists, artist_photo|
+      artists << artist_photo.first.name if artist_photo.last.length > 1
+      artists
+    end
+  end
 end
