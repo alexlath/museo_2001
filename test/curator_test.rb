@@ -83,7 +83,6 @@ class CuratorTest < Minitest::Test
   end
 
   def test_it_can_create_hash_of_photographs_by_artist
-    skip
     @curator.add_artist(@artist_1)
     @curator.add_artist(@artist_2)
     @curator.add_artist(@artist_3)
