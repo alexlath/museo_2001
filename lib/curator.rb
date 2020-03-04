@@ -1,3 +1,7 @@
+require 'csv'
+require './lib/photograph'
+require './lib/artist'
+
 class Curator
   attr_reader :photographs, :artists
 
@@ -45,7 +49,18 @@ class Curator
 
   def photographs_taken_by_artist_from(country)
     @photographs.select do |photograph|
-      artist_ids_from(country).include?(@photograph.artist_id)
+      artist_ids_from(country).include?(photograph.artist_id)
+    end
+  end
+
+  def csv_data(path, object)
+    csv = CSV.open(path, headers: :first_row, header_converters: :symbol)
+    csv.map { |row| object.new(row) }
+  end
+
+  def load_photographs(path)
+    csv_data(path, Photograph).each do |photograph|
+      add_photograph(photograph)
     end
   end
 end

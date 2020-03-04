@@ -148,7 +148,6 @@ class CuratorTest < Minitest::Test
   end
 
   def test_it_can_load_photographs
-    skip
     photo_4 = Photograph.new({id: "4",
                               name: "Child with Toy Hand Grenade in Central Park",
                               artist_id: "3",
