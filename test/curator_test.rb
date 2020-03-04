@@ -23,9 +23,10 @@ class CuratorTest < Minitest::Test
 
   def test_it_has_attributes
     assert_equal [], @curator.photographs
+    assert_equal [], @curator.artists
   end
 
-  def test_it_can_add_photographs
+  def test_it_can_add_a_photograph
     @curator.add_photograph(@photo_1)
     @curator.add_photograph(@photo_2)
 
