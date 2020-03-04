@@ -36,10 +36,17 @@ class Curator
     end
   end
 
-  def artists_from(country)
-    @artists.select { |artist| artist.country == country }
+  def artist_ids_from(country)
+    @artists.reduce([]) do |artist_ids, artist|
+      artist_ids << artist.id if artist.country == country
+      artist_ids
+    end
   end
 
-  def photographs_taken_by_artist_from(country)
-  end
+  # def photographs_taken_by_artist_from(country)
+  #   @photographs.map { |photograph| photograph if artist_ids_from(country).include?(@artists.select @photograph.artist_id) }
+  #
+  #
+  #   artists_from(country).flat_map { |artist| @photographs. }
+  # end
 end

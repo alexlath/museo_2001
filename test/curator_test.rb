@@ -110,13 +110,13 @@ class CuratorTest < Minitest::Test
     assert_equal ["Diane Arbus"], @curator.artists_with_multiple_photographs
   end
 
-  def test_it_can_find_artists_from_given_country
+  def test_it_can_find_artist_ids_from_given_country
     @curator.add_artist(@artist_1)
     @curator.add_artist(@artist_2)
     @curator.add_artist(@artist_3)
 
-    assert_equal [@artist_2, @artist_3], @curator.artists_from("United States")
-    assert_equal [], @curator.artists_from("Argentina")
+    assert_equal ["2", "3"], @curator.artist_ids_from("United States")
+    assert_equal [], @curator.artist_ids_from("Argentina")
   end
 
   def test_it_can_find_photographs_taken_by_artists_from_given_country
