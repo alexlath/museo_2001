@@ -70,7 +70,20 @@ class CuratorTest < Minitest::Test
     assert_equal @artist_1, @curator.find_artist_by_id("1")
   end
 
-  def test_case_name
+  def test_it_can_find_photographs_by_artist
+    @curator.add_artist(@artist_3)
+    @curator.add_photograph(@photo_1)
+    @curator.add_photograph(@photo_2)
+    @curator.add_photograph(@photo_3)
+    @curator.add_photograph(@photo_4)
+
+    expected = [@photo_3, @photo_4]
+
+    assert_equal expected, @curator.find_photographs_by_artist(@artist_3)
+  end
+
+  def test_it_can_create_hash_of_photographs_by_artist
+    skip
     @curator.add_artist(@artist_1)
     @curator.add_artist(@artist_2)
     @curator.add_artist(@artist_3)
