@@ -65,8 +65,8 @@ class Curator
   end
 
   def load_artists(path)
-    csv_data(path, Artist).each do |photograph|
-      add_photograph(photograph)
+    csv_data(path, Artist).each do |artist|
+      add_artist(artist)
     end
   end
 end

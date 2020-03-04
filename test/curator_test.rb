@@ -153,9 +153,8 @@ class CuratorTest < Minitest::Test
                               artist_id: "3",
                               year: "1962"})
 
-    @curator.load_photographs('./data/photographs.csv')
-
     expected = [@photo_1, @photo_2, @photo_3, photo_4]
+    @curator.load_photographs('./data/photographs.csv')
 
     # This test fails, but it does what I wanted it to do!
     # Please look at @photographs after load_photographs runs
